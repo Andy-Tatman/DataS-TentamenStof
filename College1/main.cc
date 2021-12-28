@@ -14,28 +14,48 @@ bool inspect(std::string const & str) {
 
 int main() {
     trie* woordBoom = new trie;
-    if ( woordBoom->zitStringInBoom("") ) {
-        std::cout << "Henlo" << std::endl;
-    }
-    else {
-        std::cout << "No" << std::endl;
+    std::cout << "1: Add a word to the trie." << std::endl
+              << "2: Test to see if a word is in the trie." << std::endl
+              << "3 (or \"end\"): End" << std::endl
+              << "!! All words can only contains letters in [a-z]." << std::endl;
+    std::string invoer = "";
+    std::string word = "";
+    while (invoer != "end" && std::cin.eof() != 1) {
+        std::cout << "New option: ";
+        std::cin >> invoer;
+        if (invoer == "end") {
+            break;
+        }
+        else if (invoer == "1") {
+            std::cout << "Submit the word: ";
+            std::cin >> word;
+            if (!inspect(word)) {
+                std::cout << "Inspection failed." << std::endl;
+            }
+            else {
+                woordBoom->addString(word);
+            }
+            
+        }
+        else if (invoer == "2") {
+            std::cout << "Submit the word: ";
+            std::cin >> word;
+            if (!inspect(word)) {
+                std::cout << "Inspection failed." << std::endl;
+            }
+            else {
+                if( woordBoom->zitStringInBoom(word) )
+                    std::cout << "Yes" << std::endl;
+                else 
+                    std::cout << "No" << std::endl;
+            }
+            
+        }
+        else {
+            std::cout << "Bruh idk that option" << std::endl;
+        }
     }
 
-    if ( woordBoom->zitStringInBoom("aaa") ) {
-        std::cout << "Henlo" << std::endl;
-    }
-    else {
-        std::cout << "No" << std::endl;
-    }
-    
-
-    woordBoom->addString("a");
-    if ( woordBoom->zitStringInBoom("a") ) {
-        std::cout << "Henlo" << std::endl;
-    }
-    else {
-        std::cout << "No" << std::endl;
-    }
 
     delete woordBoom;
     return 0;
