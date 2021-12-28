@@ -18,13 +18,11 @@ class knoop {
         void stelInEind(); //Dit is het einde van een woord. 
         bool zitStrSubboom(std::string const & str) const;
         void addStrSubboom(std::string const & str);
-        void Report() { if (eenKind) std::cout << "True" << std::endl;
-                        else std::cout << "False" << std::endl;  }
+
     private:
         knoop* kinderen[26]; // Voor elke letter a-z 1
         bool hebKind[26]; // Is dit kind al aangemaakt?
         bool isEindWoord;
-        bool eenKind;
         // geen letter nodig: De plek in de array geeft al wat de letter is.
 };
 
