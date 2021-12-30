@@ -1,5 +1,5 @@
 #include <iostream>
-#include "boom.h"
+#include "threads.h"
 
 
 knoop::knoop() {
@@ -105,6 +105,9 @@ void knoop::printInorderSubboom() const {
     }
 }
 
+
+//---------
+// Threads
 
 void knoop::knoopThreads(knoop* const threadAdres) { 
     knoop * hulp;
@@ -216,4 +219,8 @@ void boom::controlThreads() const {
     else {
         std::cout << "Error: niet alles bezocht." << std::endl;
     }
+}
+
+void boom::zetallesOnbezocht() {
+    beginKnoop->onbezochtSubboom();
 }

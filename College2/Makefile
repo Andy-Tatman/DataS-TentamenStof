@@ -2,9 +2,15 @@ CC = g++
 
 CompileParms = -c -Wall -std=c++11
 
-OBJS = main.o boom.o
+OBJS = \
+	main.o \
+	threads.o \
+	\
 
-HEAD = boom.h
+HEAD = \
+	threads.h \
+	\ 
+
 
 all: main
 
