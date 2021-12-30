@@ -19,11 +19,22 @@ void knoop::verwijderKinderen() {
         this->linker->verwijderKinderen();
         delete this->linker;
     } 
-    // Verwijder dit kind alleen als het geen thread is. 
-    //  (dus alleen als het echt een kind is.)
+    // Ga alleen rechts af als het GEEN thread is.
     if (this->righter != nullptr && !rightIsThread) {
         this->righter->verwijderKinderen();
         delete this->righter;
+    }
+}
+
+void knoop::onbezochtSubboom() {
+    this->bezocht = false;
+    if (this->linker != nullptr) {
+        this->linker->onbezochtSubboom();
+    } 
+    // Verwijder dit kind alleen als het geen thread is. 
+    //  (dus alleen als het echt een kind is.)
+    if (this->righter != nullptr && !rightIsThread) {
+        this->righter->onbezochtSubboom();
     }
 }
 
