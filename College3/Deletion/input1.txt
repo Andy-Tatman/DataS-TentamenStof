@@ -1,0 +1,12 @@
+insert 3
+insert 2
+insert 4
+insert 5
+print
+deleteCopy 4
+print
+deleteCopy 5
+print
+insert 4
+print
+end
