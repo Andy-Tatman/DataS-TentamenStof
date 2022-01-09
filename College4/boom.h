@@ -9,7 +9,7 @@ class knoop {
         knoop(int const & nieuw);
         ~knoop();
         void verwijderKinderen();
-        void insertK(int const & nieuw);
+        void insertK(int const & nieuw, bool & checkBalans);
         bool isElementK(int const & num) const;
         void deleteCopyK(int const & num);
         void deleteMergeK(int const & num);
@@ -18,9 +18,10 @@ class knoop {
         void printInorderSubboom() const;
         void printDotNotK(std::ofstream & uitvoer) const;
         void zetDotNK(long long & teller);
-    private:
+    // private:
         int nummer;
         int dotN;
+        int balans;
         knoop* linker;
         knoop* righter;
 

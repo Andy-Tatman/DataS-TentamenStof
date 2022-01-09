@@ -8,6 +8,7 @@ knoop::knoop() {
     righter = nullptr;
     nummer = -1;
     dotN = -1;
+    balans = 0;
 }
 
 knoop::knoop(int const & nieuw) {
@@ -15,6 +16,7 @@ knoop::knoop(int const & nieuw) {
     righter = nullptr;
     nummer = nieuw;
     dotN = -1;
+    balans = 0;
 }
 
 knoop::~knoop() { 
@@ -33,7 +35,8 @@ void knoop::verwijderKinderen() {
 }
 
 
-void knoop::insertK(int const & nieuw) {
+void knoop::insertK(int const & nieuw, bool & checkBalans) {
+    bool checkZelfBal;
     if (nieuw == this->nummer) {
         return;
     }
@@ -41,18 +44,26 @@ void knoop::insertK(int const & nieuw) {
         // zoek links
         if (this->linker == nullptr) {
             this->linker = new knoop(nieuw);
+            checkBalans = true; // Check de balans hierboven
         }
         else {
-            this->linker->insertK(nieuw);
+            this->linker->insertK(nieuw, checkZelfBal);
+            if (checkZelfBal) {
+                // TODO
+            }
         }
     }
     else { // >
         // zoek rechts
         if (this->righter == nullptr) {
             this->righter = new knoop(nieuw);
+            checkBalans = true; // Check de balans hierboven
         }
         else {
-            this->righter->insertK(nieuw);
+            this->righter->insertK(nieuw, checkZelfBal);
+            if (checkZelfBal) {
+                // TODO
+            }
         }
     }
 
@@ -142,7 +153,11 @@ void boom::insert(int const & nieuw) {
         beginKnoop = new knoop(nieuw);
     }
     else {
-        beginKnoop->insertK(nieuw);
+        bool placeholder;
+        beginKnoop->insertK(nieuw, placeholder);
+        if (placeholder) {
+            std::cout << "Oeps hoort dit??" << std::endl;
+        }
     }
 }
 
